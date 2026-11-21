@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bê Tông Gia Nghĩa — Cấu Kiện Đúc Sẵn & Vật Tư Rào</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="#c85a17" />
+  <style>
+    :root {
+      --bg-page: #f4f5f7;
+      --bg-card: #ffffff;
+      --bg-soft: #eef1f5;
+      --ink-primary: #18202c;
+      --ink-secondary: #526071;
+      --ink-muted: #7b8794;
+      --accent: #c85a17;
+      --accent-dark: #a2450d;
+      --accent-soft: #fff2ea;
+      --border: #dfe4ea;
+      --success: #15803d;
+      --success-soft: #dcfce7;
+      --warning: #b45309;
+      --warning-soft: #fef3c7;
+      --danger: #b91c1c;
+      --danger-soft: #fee2e2;
+      --shadow-sm: 0 2px 8px rgba(24, 32, 44, 0.05);
+      --shadow-md: 0 10px 28px rgba(24, 32, 44, 0.12);
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg-page);
+      color: var(--ink-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+      overflow: hidden;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .app-shell {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-page);
+      position: relative;
+    }
+
+    /* Pinned Top Header & Controls */
+    #pinnedTopShell {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 10px 14px 10px;
+      flex-shrink: 0;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #c85a17 0%, #8c3b0b 100%);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      flex-shrink: 0;
+    }
+
+    .brand-titles {
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .icon-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      position: relative;
+      height: 40px;
+      min-width: 40px;
+      padding: 0 11px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-soft);
+      color: var(--ink-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: background 0.15s ease, transform 0.12s ease;
+    }
+
+    .icon-btn:hover {
+      background: #e2e7ee;
+    }
+
+    .icon-btn:active {
+      transform: scale(0.97);
+    }
+
+    .icon-btn.is-active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    #openOrderBtn {
+      background: var(--ink-primary);
+      color: #fff;
+      padding: 0 13px;
+    }
+
+    #openOrderBtn:hover {
+      background: #273447;
+    }
+
+    .badge-dot {
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-card);
+    }
+
+    #openOrderBtn .badge-dot {
+      position: static;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .cart-total-chip {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd8be;
+      white-space: nowrap;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 12px;
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+
+    #searchInput {
+      width: 100%;
+      height: 40px;
+      padding: 0 34px 0 38px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--ink-primary);
+      outline: none;
+    }
+
+    #searchInput:focus {
+      background: #fff;
+      border-color: var(--accent);
+    }
+
+    #clearSearchBtn {
+      position: absolute;
+      right: 8px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      color: var(--ink-primary);
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #clearSearchBtn.visible {
+      display: inline-flex;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .category-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-pill {
+      flex-shrink: 0;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .cat-pill.active {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid #f5c3a4;
+    }
+
+    .owner-banner {
+      display: none;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--warning-soft);
+      border: 1px solid #fcd34d;
+      color: #78350f;
+      font-size: 12.5px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .owner-banner.active {
+      display: flex;
+    }
+
+    .owner-reset-btn {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: #fff;
+      border: 1px solid #d97706;
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Independent Scrollable Catalog Region */
+    #catalogScrollRegion {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px 96px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .catalog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (min-width: 680px) {
+      .catalog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-top {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-type-tag {
+      align-self: flex-start;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+    }
+
+    .product-type-tag.pole-electric {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .product-type-tag.pole-fence {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .product-name {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      line-height: 1.3;
+    }
+
+    .product-spec {
+      font-size: 12px;
+      color: var(--ink-secondary);
+    }
+
+    .product-note {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    .product-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .product-price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+
+    .product-unit {
+      font-size: 12px;
+      color: var(--ink-secondary);
+    }
+
+    .owner-edit-box {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+    }
+
+    .owner-mode .owner-edit-box {
+      display: flex;
+    }
+
+    .owner-edit-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #92400e;
+    }
+
+    .owner-price-input {
+      width: 100%;
+      height: 34px;
+      padding: 0 8px;
+      border-radius: 8px;
+      border: 1px solid #d97706;
+      background: #fff;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .qty-action-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qty-stepper {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      background: var(--bg-soft);
+      height: 34px;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 100%;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--ink-primary);
+    }
+
+    .qty-val {
+      min-width: 24px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .add-cart-btn {
+      flex: 1;
+      height: 34px;
+      padding: 0 10px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .add-cart-btn:hover {
+      background: var(--accent-dark);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 36px 18px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+      color: var(--ink-secondary);
+    }
+
+    /* Floating AI Button (48x48px) */
+    #aiFabBtn {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      place-items: center;
+      z-index: 35;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    #aiFabBtn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Bell Popover */
+    #bellPopover {
+      position: fixed;
+      top: 58px;
+      right: 14px;
+      width: min(340px, calc(100vw - 28px));
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      z-index: 45;
+      display: none;
+      overflow: hidden;
+    }
+
+    #bellPopover.open {
+      display: block;
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-soft);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .close-x-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      color: var(--ink-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .close-x-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .notif-list {
+      max-height: 280px;
+      overflow-y: auto;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .notif-item {
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-soft);
+      font-size: 12.5px;
+    }
+
+    .notif-title {
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .notif-time {
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+
+    /* Modal / Drawer Backdrop */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.48);
+      z-index: 50;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    @media (min-width: 680px) {
+      .modal-backdrop {
+        align-items: center;
+        padding: 18px;
+      }
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .sheet-panel {
+      width: 100%;
+      max-width: 620px;
+      max-height: 90dvh;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @media (min-width: 680px) {
+      .sheet-panel {
+        border-radius: var(--radius-lg);
+        max-height: 86dvh;
+      }
+    }
+
+    .sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .sheet-title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .sheet-body {
+      padding: 14px 16px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Stepper in Order Drawer */
+    .steps-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .step-tab {
+      padding: 8px 6px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-soft);
+      color: var(--ink-secondary);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .step-tab.active {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid #f5c3a4;
+    }
+
+    .step-panel {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-panel.active {
+      display: flex;
+    }
+
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+    }
+
+    .cart-item-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+
+    .cart-item-sub {
+      font-size: 12px;
+      color: var(--ink-secondary);
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .field-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--ink-secondary);
+    }
+
+    .input-control, .select-control, .textarea-control {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 11px;
+      background: #fff;
+      color: var(--ink-primary);
+      outline: none;
+    }
+
+    .input-control:focus, .select-control:focus, .textarea-control:focus {
+      border-color: var(--accent);
+    }
+
+    .fleet-card {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .fleet-phone-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .fleet-phone-badge {
+      font-weight: 800;
+      color: var(--accent-dark);
+      font-size: 13px;
+    }
+
+    .bill-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: #fcfcfd;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .bill-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .bill-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-dark);
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sheet-footer {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      flex: 1;
+      height: 40px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      height: 40px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-soft);
+      color: var(--ink-primary);
+      font-weight: 700;
+      font-size: 13.5px;
+    }
+
+    /* AI Assistant Chat & Capsule Composer */
+    .ai-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ai-msg {
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      max-width: 92%;
+      white-space: pre-line;
+    }
+
+    .ai-msg.bot {
+      align-self: flex-start;
+      background: var(--bg-soft);
+      color: var(--ink-primary);
+      border-bottom-left-radius: 4px;
+    }
+
+    .ai-msg.user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .quick-prompts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .quick-chip {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    #aiForm {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .capsule-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 0 6px 0 14px;
+      height: 42px;
+    }
+
+    .capsule-input-wrap:focus-within {
+      background: #fff;
+      border-color: var(--accent);
+    }
+
+    #aiInput {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13.5px;
+    }
+
+    #aiSendBtn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toast-msg {
+      position: fixed;
+      left: 50%;
+      bottom: 76px;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--ink-primary);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12.5px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 80;
+      white-space: nowrap;
+    }
+
+    .toast-msg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="appRoot">
+    <!-- Pinned Top Shell -->
+    <header id="pinnedTopShell">
+      <div class="top-bar">
+        <div class="brand-block">
+          <div class="brand-mark">BGN</div>
+          <div class="brand-titles">
+            <div class="brand-title">Bê Tông Gia Nghĩa</div>
+            <div class="brand-sub">Cấu kiện đúc sẵn &amp; vật tư rào</div>
+          </div>
+        </div>
+
+        <div class="icon-actions">
+          <button type="button" class="icon-btn" id="bellBtn" title="Thông báo" aria-label="Thông báo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span class="badge-dot" id="bellBadge">2</span>
+          </button>
+
+          <button type="button" class="icon-btn" id="ownerBtn" title="Chế độ Chủ" aria-label="Chế độ Chủ">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </button>
+
+          <button type="button" class="icon-btn" id="openOrderBtn" title="Đơn hàng" aria-label="Đơn hàng">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="badge-dot" id="headerCartCount">0</span>
+            <span class="cart-total-chip" id="headerCartTotal">0đ</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Tìm trụ điện, trụ rào, cống D400, gạch trồng cỏ..." autocomplete="off" />
+          <button type="button" id="clearSearchBtn" aria-label="Xóa tìm kiếm">✕</button>
+        </div>
+      </div>
+
+      <div class="category-pills" id="categoryPills">
+        <button type="button" class="cat-pill active" data-cat="all">Tất cả (13)</button>
+        <button type="button" class="cat-pill" data-cat="tru-dien">Trụ điện</button>
+        <button type="button" class="cat-pill" data-cat="tru-rao">Trụ rào</button>
+        <button type="button" class="cat-pill" data-cat="cong-be-tong">Cống bê tông</button>
+        <button type="button" class="cat-pill" data-cat="gach-tam-dan">Gạch &amp; tấm đan</button>
+        <button type="button" class="cat-pill" data-cat="vat-tu-rao">Lưới &amp; kẽm rào</button>
+      </div>
+
+      <div class="owner-banner" id="ownerBanner">
+        <span><strong>Chế độ Chủ đang bật:</strong> Sửa giá trực tiếp trên từng thẻ (tự lưu thiết bị).</span>
+        <button type="button" class="owner-reset-btn" id="resetDefaultBtn">Khôi phục gốc</button>
+      </div>
+    </header>
+
+    <!-- Bell Popover -->
+    <div id="bellPopover" role="dialog" aria-label="Thông báo xưởng">
+      <div class="popover-header">
+        <span>Thông báo &amp; Điều phối</span>
+        <button type="button" class="close-x-btn" id="closeBellBtn" aria-label="Đóng thông báo">✕</button>
+      </div>
+      <div class="notif-list" id="notifList"></div>
+    </div>
+
+    <!-- Independent Scrollable Catalog -->
+    <main id="catalogScrollRegion">
+      <div class="catalog-meta">
+        <span id="catalogCountText">Hiển thị 13 mặt hàng</span>
+        <span id="storageInfoText">Lưu: betong_gia_nghia_state_v4</span>
+      </div>
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </main>
+
+    <!-- Floating AI Button (48x48px) -->
+    <button type="button" id="aiFabBtn" title="Trợ lý AI xưởng" aria-label="Trợ lý AI xưởng">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Order & Bill Drawer Modal -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="sheet-panel">
+      <div class="sheet-header">
+        <span class="sheet-title">Đặt hàng &amp; Phiếu Bill</span>
+        <button type="button" class="close-x-btn" id="closeOrderBtn" aria-label="Đóng đơn hàng">✕</button>
+      </div>
+
+      <div class="sheet-body">
+        <div class="steps-bar">
+          <button type="button" class="step-tab active" data-step="1">1. Giỏ hàng</button>
+          <button type="button" class="step-tab" data-step="2">2. Xe &amp; Giao nhận</button>
+          <button type="button" class="step-tab" data-step="3">3. Phiếu Bill</button>
+        </div>
+
+        <!-- Step 1: Cart -->
+        <div class="step-panel active" id="stepPanel1">
+          <div id="cartItemsList"></div>
+        </div>
+
+        <!-- Step 2: Vehicle & Delivery -->
+        <div class="step-panel" id="stepPanel2">
+          <div class="field-group">
+            <label class="field-label" for="customerNameInput">Tên khách / công trình</label>
+            <input type="text" id="customerNameInput" class="input-control" placeholder="VD: Anh Minh — Rẫy / Nhà QL28" />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="customerPhoneInput">Số điện thoại nhận hàng</label>
+            <input type="tel" id="customerPhoneInput" class="input-control" placeholder="VD: 09xx xxx xxx" />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="deliveryAddressInput">Điểm giao hàng (Gia Nghĩa / lân cận)</label>
+            <input type="text" id="deliveryAddressInput" class="input-control" placeholder="VD: P. Nghĩa Đức / Quảng Khê / Đắk R'lấp" />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="vehicleSelect">Loại xe vận tải gợi ý</label>
+            <select id="vehicleSelect" class="select-control">
+              <option value="ba-gac">Xe ba gác / Xe nhỏ — Đường hẻm, lối vào vườn rẫy, đơn gọn</option>
+              <option value="tai-thung">Xe tải thùng — Gạch, tấm đan, lưới B40, kẽm gai, trụ rào</option>
+              <option value="xe-cau">Xe cẩu tự hành — Cống D400, trụ điện bê tông, kiện nặng</option>
+            </select>
+          </div>
+
+          <div class="fleet-card" id="fleetSuggestionCard"></div>
+
+          <div class="field-group">
+            <label class="field-label" for="dispatchPhoneInput">SĐT nhà xe (có thể chỉnh ngay cho chuyến này)</label>
+            <input type="text" id="dispatchPhoneInput" class="input-control" />
+          </div>
+        </div>
+
+        <!-- Step 3: Bill -->
+        <div class="step-panel" id="stepPanel3">
+          <div class="bill-box" id="billPreviewBox"></div>
+        </div>
+      </div>
+
+      <div class="sheet-footer" id="orderFooter">
+        <button type="button" class="btn-secondary" id="prevStepBtn" style="display:none;">Quay lại</button>
+        <button type="button" class="btn-primary" id="nextStepBtn">Tiếp tục: Xe &amp; Giao nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Assistant Modal -->
+  <div class="modal-backdrop" id="aiModal">
+    <div class="sheet-panel">
+      <div class="sheet-header">
+        <span class="sheet-title">Trợ lý AI — Bê Tông Gia Nghĩa</span>
+        <button type="button" class="close-x-btn" id="closeAiBtn" aria-label="Đóng Trợ lý AI">✕</button>
+      </div>
+
+      <div class="sheet-body">
+        <div class="quick-prompts">
+          <button type="button" class="quick-chip" data-q="Phân biệt trụ điện và trụ rào">Trụ điện vs Trụ rào</button>
+          <button type="button" class="quick-chip" data-q="Gợi ý xe chở cống D400 và trụ điện">Xe chở cống &amp; trụ điện</button>
+          <button type="button" class="quick-chip" data-q="SĐT nhà xe hiện tại">SĐT nhà xe</button>
+          <button type="button" class="quick-chip" data-q="Cách sửa giá ở Chế độ Chủ">Cách sửa giá</button>
+        </div>
+
+        <div class="ai-messages" id="aiMessages"></div>
+      </div>
+
+      <form id="aiForm">
+        <div class="capsule-input-wrap">
+          <input type="text" id="aiInput" placeholder="Hỏi về cấu kiện, trụ rào, trụ điện, xe chở..." autocomplete="off" />
+          <button type="submit" id="aiSendBtn" aria-label="Gửi">➤</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-msg" id="toastMsg"></div>
+
+  <script>
+    const STORAGE_KEY = "betong_gia_nghia_state_v4";
+    const DEFAULT_DISPATCH_PHONE = "SĐT nhà xe mẫu - cập nhật xưởng";
+
+    // 13 items: precast concrete & fencing supplies
+    const INITIAL_PRODUCTS = [
+      {
+        id: "tru-dien-7m",
+        name: "Trụ điện bê tông ly tâm 7m",
+        category: "tru-dien",
+        typeBadge: "Trụ điện",
+        badgeClass: "pole-electric",
+        spec: "Cao 7.0m • Kéo dây điện / chiếu sáng",
+        note: "Cần xe cẩu tự hành khi bốc xếp & hạ trụ.",
+        unit: "trụ",
+        price: 1450000
+      },
+      {
+        id: "tru-dien-8m",
+        name: "Trụ điện bê tông ly tâm 8m",
+        category: "tru-dien",
+        typeBadge: "Trụ điện",
+        badgeClass: "pole-electric",
+        spec: "Cao 8.0m • Tuyến điện & đường trục",
+        note: "Hỗ trợ cẩu lắp theo tuyến đường rộng.",
+        unit: "trụ",
+        price: 1850000
+      },
+      {
+        id: "tru-rao-1m8",
+        name: "Trụ rào bê tông đúc sẵn 1.8m",
+        category: "tru-rao",
+        typeBadge: "Trụ rào",
+        badgeClass: "pole-fence",
+        spec: "Dài 1.8m • Rào lưới B40 / kẽm gai",
+        note: "Có lỗ/rãnh luồn kẽm hoặc buộc lưới rào vườn.",
+        unit: "trụ",
+        price: 85000
+      },
+      {
+        id: "tru-rao-2m0",
+        name: "Trụ rào bê tông đúc sẵn 2.0m",
+        category: "tru-rao",
+        typeBadge: "Trụ rào",
+        badgeClass: "pole-fence",
+        spec: "Dài 2.0m • Rào ranh giới, khu đất",
+        note: "Phù hợp rào cao chống leo trèo, gia súc.",
+        unit: "trụ",
+        price: 98000
+      },
+      {
+        id: "tru-goc-giang-2m2",
+        name: "Trụ góc & trụ giằng bê tông 2.2m",
+        category: "tru-rao",
+        typeBadge: "Trụ rào",
+        badgeClass: "pole-fence",
+        spec: "Dài 2.2m • Cốt thép dày chịu lực kéo",
+        note: "Dùng cho góc rào, đầu hàng và điểm căng lưới.",
+        unit: "trụ",
+        price: 135000
+      },
+      {
+        id: "cong-d400-1m",
+        name: "Cống tròn bê tông D400 (dài 1m)",
+        category: "cong-be-tong",
+        typeBadge: "Cống bê tông",
+        badgeClass: "",
+        spec: "Đường kính trong 400mm • Dài 1.0m",
+        note: "Thoát nước sân, đường ngang, lối vào rẫy.",
+        unit: "ống",
+        price: 360000
+      },
+      {
+        id: "cong-d600-1m",
+        name: "Cống tròn bê tông D600 (dài 1m)",
+        category: "cong-be-tong",
+        typeBadge: "Cống bê tông",
+        badgeClass: "",
+        spec: "Đường kính trong 600mm • Dài 1.0m",
+        note: "Thoát nước mương lớn, xe tải qua lại.",
+        unit: "ống",
+        price: 540000
+      },
+      {
+        id: "gach-trong-co-8-lo",
+        name: "Gạch trồng cỏ 8 lỗ bê tông",
+        category: "gach-tam-dan",
+        typeBadge: "Gạch & tấm đan",
+        badgeClass: "",
+        spec: "8 lỗ thoáng • Lát sân vườn, bãi đỗ xe",
+        note: "Giữ cỏ xanh, thoát nước mưa tốt, chống trơn.",
+        unit: "viên",
+        price: 28000
+      },
+      {
+        id: "tam-dan-50x50",
+        name: "Tấm đan bê tông đúc sẵn 50x50cm",
+        category: "gach-tam-dan",
+        typeBadge: "Gạch & tấm đan",
+        badgeClass: "",
+        spec: "Kích thước 50x50cm • Đậy rãnh thoát nước",
+        note: "Dễ tháo lắp vệ sinh mương rãnh định kỳ.",
+        unit: "tấm",
+        price: 65000
+      },
+      {
+        id: "luoi-b40-1m5",
+        name: "Lưới B40 mạ kẽm khổ 1.5m (cuộn)",
+        category: "vat-tu-rao",
+        typeBadge: "Lưới & kẽm rào",
+        badgeClass: "",
+        spec: "Cao 1.5m • Ô lưới đều, bền thời tiết",
+        note: "Phối hợp trụ rào 1.8m hoặc 2.0m.",
+        unit: "cuộn",
+        price: 520000
+      },
+      {
+        id: "luoi-b40-2m0",
+        name: "Lưới B40 mạ kẽm khổ 2.0m (cuộn)",
+        category: "vat-tu-rao",
+        typeBadge: "Lưới & kẽm rào",
+        badgeClass: "",
+        spec: "Cao 2.0m • Rào bảo vệ mặt bằng lớn",
+        note: "Chắc chắn cho đất rẫy, kho bãi, công trình.",
+        unit: "cuộn",
+        price: 690000
+      },
+      {
+        id: "kem-gai-cuon",
+        name: "Dây kẽm gai cuộn rào bảo vệ",
+        category: "vat-tu-rao",
+        typeBadge: "Lưới & kẽm rào",
+        badgeClass: "",
+        spec: "Mối gai sắc • Chống xâm nhập hàng rào",
+        note: "Đi kèm trụ rào và trụ góc 2.2m.",
+        unit: "cuộn",
+        price: 165000
+      },
+      {
+        id: "day-kem-buoc-rao",
+        name: "Dây kẽm buộc & giằng hàng rào (kg)",
+        category: "vat-tu-rao",
+        typeBadge: "Lưới & kẽm rào",
+        badgeClass: "",
+        spec: "Dẻo dai • Cố định lưới & căng kẽm vào trụ",
+        note: "Phụ kiện thiết yếu khi thi công hàng rào.",
+        unit: "kg",
+        price: 36000
+      }
+    ];
+
+    const FLEET_PROFILES = {
+      "ba-gac": {
+        label: "Xe ba gác / Xe nhỏ",
+        suitableFor: "Đường hẻm nhỏ, lối rẽ vào rẫy, số lượng ít (gạch trồng cỏ, tấm đan, lưới B40, trụ rào gọn).",
+        tip: "Phù hợp nơi xe tải lớn khó quay đầu."
+      },
+      "tai-thung": {
+        label: "Xe tải thùng",
+        suitableFor: "Lô lớn trụ rào, gạch lát, tấm đan, lưới B40, kẽm gai chạy tuyến đường ô tô.",
+        tip: "Tối ưu chi phí chuyến khi chở số lượng nhiều."
+      },
+      "xe-cau": {
+        label: "Xe cẩu tự hành",
+        suitableFor: "Cống tròn bê tông D400/D600, trụ điện bê tông 7m/8m hoặc kiện cấu kiện nặng.",
+        tip: "Bốc xếp & hạ hàng trực tiếp tại điểm tập kết."
+      }
+    };
+
+    const INITIAL_NOTIFICATIONS = [
+      {
+        id: "n1",
+        title: "Sẵn sàng nhận đơn cấu kiện & vật tư rào",
+        body: "Hỗ trợ lọc nhanh trụ điện, trụ rào, cống bê tông và gợi ý xe vận tải phù hợp.",
+        time: "Hôm nay"
+      },
+      {
+        id: "n2",
+        title: "Chế độ Chủ & Lưu trữ thiết bị",
+        body: "Nhấn biểu tượng bút sửa để cập nhật đơn giá; dữ liệu lưu tại betong_gia_nghia_state_v4.",
+        time: "Hệ thống"
+      }
+    ];
+
+    function buildDefaultState() {
+      const prices = {};
+      INITIAL_PRODUCTS.forEach((p) => {
+        prices[p.id] = p.price;
+      });
+      return {
+        prices,
+        cart: {},
+        ownerMode: false,
+        dispatchPhone: DEFAULT_DISPATCH_PHONE,
+        customer: {
+          name: "",
+          phone: "",
+          address: "",
+          vehicle: "tai-thung"
+        },
+        notifications: INITIAL_NOTIFICATIONS
+      };
+    }
+
+    function loadState() {
+      const fallback = buildDefaultState();
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        return {
+          prices: { ...fallback.prices, ...(parsed.prices || {}) },
+          cart: { ...(parsed.cart || {}) },
+          ownerMode: Boolean(parsed.ownerMode),
+          dispatchPhone: typeof parsed.dispatchPhone === "string" && parsed.dispatchPhone.trim()
+            ? parsed.dispatchPhone.trim()
+            : DEFAULT_DISPATCH_PHONE,
+          customer: { ...fallback.customer, ...(parsed.customer || {}) },
+          notifications: Array.isArray(parsed.notifications) && parsed.notifications.length
+            ? parsed.notifications
+            : INITIAL_NOTIFICATIONS
+        };
+      } catch (err) {
+        return fallback;
+      }
+    }
+
+    let state = loadState();
+    let activeCategory = "all";
+    let searchQuery = "";
+    let currentOrderStep = 1;
+    const cardDraftQty = {};
+    INITIAL_PRODUCTS.forEach((p) => {
+      cardDraftQty[p.id] = 1;
+    });
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (err) {
+        showToast("Không thể lưu bộ nhớ trình duyệt");
+      }
+    }
+
+    function formatVND(amount) {
+      const n = Number(amount) || 0;
+      return n.toLocaleString("vi-VN") + "đ";
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById("toastMsg");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        el.classList.remove("show");
+      }, 2000);
+    }
+
+    function getProductsWithPrice() {
+      return INITIAL_PRODUCTS.map((item) => ({
+        ...item,
+        currentPrice: Number(state.prices[item.id] ?? item.price)
+      }));
+    }
+
+    function matchesSearch(product, rawQuery) {
+      const q = rawQuery.trim().toLowerCase();
+      if (!q) return true;
+
+      // Separate "trụ điện" vs "trụ rào" queries cleanly
+      const hasTruDien = q.includes("trụ điện") || q.includes("tru dien");
+      const hasTruRao = q.includes("trụ rào") || q.includes("tru rao");
+      if (hasTruDien && !hasTruRao) {
+        return product.category === "tru-dien";
+      }
+      if (hasTruRao && !hasTruDien) {
+        return product.category === "tru-rao";
+      }
+
+      const haystack = [
+        product.name,
+        product.spec,
+        product.note,
+        product.typeBadge,
+        product.unit
+      ].join(" ").toLowerCase();
+
+      return haystack.includes(q);
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById("catalogGrid");
+      const countText = document.getElementById("catalogCountText");
+      const appRoot = document.getElementById("appRoot");
+      const ownerBanner = document.getElementById("ownerBanner");
+      const ownerBtn = document.getElementById("ownerBtn");
+
+      appRoot.classList.toggle("owner-mode", state.ownerMode);
+      ownerBanner.classList.toggle("active", state.ownerMode);
+      ownerBtn.classList.toggle("is-active", state.ownerMode);
+
+      const allItems = getProductsWithPrice();
+      const filtered = allItems.filter((item) => {
+        const catOk = activeCategory === "all" || item.category === activeCategory;
+        const searchOk = matchesSearch(item, searchQuery);
+        return catOk && searchOk;
+      });
+
+      countText.textContent = `Hiển thị ${filtered.length} / ${allItems.length} mặt hàng`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <div style="font-weight:800;margin-bottom:4px;">Không tìm thấy mặt hàng phù hợp</div>
+            <div>Thử đổi từ khóa (ví dụ: <em>trụ điện</em>, <em>trụ rào</em>, <em>cống</em>, <em>gạch</em>) hoặc chọn lại danh mục.</div>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((item) => {
+        const draftQty = cardDraftQty[item.id] || 1;
+        return `
+          <article class="product-card" data-id="${item.id}">
+            <div class="product-top">
+              <span class="product-type-tag ${item.badgeClass}">${item.typeBadge}</span>
+              <div class="product-name">${item.name}</div>
+              <div class="product-spec">${item.spec}</div>
+              <div class="product-note">${item.note}</div>
+            </div>
+
+            <div class="product-bottom">
+              <div class="price-row">
+                <span class="product-price">${formatVND(item.currentPrice)}</span>
+                <span class="product-unit">/ ${item.unit}</span>
+              </div>
+
+              <div class="owner-edit-box">
+                <label class="owner-edit-label" for="price-${item.id}">Đơn giá chủ xưởng (VNĐ / ${item.unit})</label>
+                <input
+                  type="number"
+                  min="0"
+                  step="1000"
+                  class="owner-price-input"
+                  id="price-${item.id}"
+                  data-price-id="${item.id}"
+                  value="${item.currentPrice}"
+                />
+              </div>
+
+              <div class="qty-action-row">
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-qty-delta="-1" data-id="${item.id}" aria-label="Giảm số lượng">−</button>
+                  <span class="qty-val" id="draftQty-${item.id}">${draftQty}</span>
+                  <button type="button" class="qty-btn" data-qty-delta="1" data-id="${item.id}" aria-label="Tăng số lượng">+</button>
+                </div>
+                <button type="button" class="add-cart-btn" data-add-id="${item.id}">+ Thêm đơn</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function getCartSummary() {
+      const items = getProductsWithPrice();
+      let totalQty = 0;
+      let totalAmount = 0;
+      const lines = [];
+
+      items.forEach((p) => {
+        const qty = Number(state.cart[p.id] || 0);
+        if (qty > 0) {
+          const lineTotal = qty * p.currentPrice;
+          totalQty += qty;
+          totalAmount += lineTotal;
+          lines.push({ ...p, qty, lineTotal });
+        }
+      });
+
+      return { lines, totalQty, totalAmount };
+    }
+
+    function updateHeaderCart() {
+      const { totalQty, totalAmount } = getCartSummary();
+      document.getElementById("headerCartCount").textContent = String(totalQty);
+      document.getElementById("headerCartTotal").textContent = formatVND(totalAmount);
+    }
+
+    function renderNotifications() {
+      const list = document.getElementById("notifList");
+      const badge = document.getElementById("bellBadge");
+      badge.textContent = String(state.notifications.length);
+      list.innerHTML = state.notifications.map((n) => `
+        <div class="notif-item">
+          <div class="notif-title">${n.title}</div>
+          <div>${n.body}</div>
+          <div class="notif-time">${n.time}</div>
+        </div>
+      `).join("");
+    }
+
+    function addToCart(productId, qtyToAdd) {
+      const current = Number(state.cart[productId] || 0);
+      state.cart[productId] = current + Math.max(1, qtyToAdd);
+      saveState();
+      updateHeaderCart();
+      showToast("Đã thêm vào đơn hàng");
+    }
+
+    // Order Drawer logic
+    function setOrderStep(step) {
+      currentOrderStep = step;
+      document.querySelectorAll(".step-tab").forEach((tab) => {
+        tab.classList.toggle("active", Number(tab.dataset.step) === step);
+      });
+      document.querySelectorAll(".step-panel").forEach((panel, idx) => {
+        panel.classList.toggle("active", idx + 1 === step);
+      });
+
+      const prevBtn = document.getElementById("prevStepBtn");
+      const nextBtn = document.getElementById("nextStepBtn");
+
+      prevBtn.style.display = step > 1 ? "inline-flex" : "none";
+      if (step === 1) {
+        nextBtn.textContent = "Tiếp tục: Xe & Giao nhận";
+      } else if (step === 2) {
+        nextBtn.textContent = "Xem phiếu Bill";
+      } else {
+        nextBtn.textContent = "Xác nhận & Lưu đơn";
+      }
+
+      if (step === 1) renderCartStep();
+      if (step === 2) renderDeliveryStep();
+      if (step === 3) renderBillStep();
+    }
+
+    function renderCartStep() {
+      const container = document.getElementById("cartItemsList");
+      const { lines, totalAmount } = getCartSummary();
+
+      if (lines.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            Chưa có cấu kiện nào trong đơn hàng. Hãy chọn số lượng và bấm <strong>+ Thêm đơn</strong> ở danh mục.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = lines.map((line) => `
+        <div class="cart-item-row">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${line.name}</div>
+            <div class="cart-item-sub">${formatVND(line.currentPrice)} / ${line.unit} • Thành tiền: <strong>${formatVND(line.lineTotal)}</strong></div>
+          </div>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" data-cart-delta="-1" data-id="${line.id}">−</button>
+            <span class="qty-val">${line.qty}</span>
+            <button type="button" class="qty-btn" data-cart-delta="1" data-id="${line.id}">+</button>
+          </div>
+        </div>
+      `).join("") + `
+        <div class="bill-total">
+          <span>Tạm tính hàng hóa</span>
+          <span>${formatVND(totalAmount)}</span>
+        </div>
+      `;
+    }
+
+    function renderFleetCard() {
+      const vKey = state.customer.vehicle || "tai-thung";
+      const profile = FLEET_PROFILES[vKey] || FLEET_PROFILES["tai-thung"];
+      document.getElementById("fleetSuggestionCard").innerHTML = `
+        <div><strong>Gợi ý xe: ${profile.label}</strong></div>
+        <div>${profile.suitableFor}</div>
+        <div style="color:var(--ink-secondary);font-size:12px;">${profile.tip}</div>
+        <div class="fleet-phone-row">
+          <span class="fleet-phone-badge" id="fleetPhoneDisplay">${state.dispatchPhone}</span>
+        </div>
+      `;
+    }
+
+    function renderDeliveryStep() {
+      document.getElementById("customerNameInput").value = state.customer.name || "";
+      document.getElementById("customerPhoneInput").value = state.customer.phone || "";
+      document.getElementById("deliveryAddressInput").value = state.customer.address || "";
+      document.getElementById("vehicleSelect").value = state.customer.vehicle || "tai-thung";
+      document.getElementById("dispatchPhoneInput").value = state.dispatchPhone || DEFAULT_DISPATCH_PHONE;
+      renderFleetCard();
+    }
+
+    function renderBillStep() {
+      const { lines, totalQty, totalAmount } = getCartSummary();
+      const vKey = state.customer.vehicle || "tai-thung";
+      const fleet = FLEET_PROFILES[vKey] || FLEET_PROFILES["tai-thung"];
+
+      const rowsHtml = lines.length
+        ? lines.map((l) => `
+            <div class="bill-line">
+              <span>${l.name} × ${l.qty} ${l.unit}</span>
+              <strong>${formatVND(l.lineTotal)}</strong>
+            </div>
+          `).join("")
+        : `<div style="color:var(--ink-muted);">Chưa chọn mặt hàng nào</div>`;
+
+      document.getElementById("billPreviewBox").innerHTML = `
+        <div style="font-weight:800;font-size:14.5px;">PHIẾU TẠM TÍNH — BÊ TÔNG GIA NGHĨA</div>
+        <div style="color:var(--ink-secondary);font-size:12px;">
+          Khách: <strong>${state.customer.name || "Chưa nhập"}</strong> • SĐT: <strong>${state.customer.phone || "Chưa nhập"}</strong><br/>
+          Giao tới: <strong>${state.customer.address || "Chưa nhập địa chỉ"}</strong>
+        </div>
+        <div style="border-top:1px dashed var(--border);padding-top:8px;display:flex;flex-direction:column;gap:6px;">
+          ${rowsHtml}
+        </div>
+        <div style="border-top:1px dashed var(--border);padding-top:8px;font-size:12.5px;color:var(--ink-secondary);">
+          Xe vận chuyển: <strong>${fleet.label}</strong><br/>
+          Liên hệ nhà xe: <strong>${state.dispatchPhone}</strong>
+        </div>
+        <div class="bill-total">
+          <span>Tổng cộng (${totalQty} món)</span>
+          <span>${formatVND(totalAmount)}</span>
+        </div>
+      `;
+    }
+
+    // AI Assistant logic
+    function appendAiMessage(text, sender) {
+      const box = document.getElementById("aiMessages");
+      const div = document.createElement("div");
+      div.className = `ai-msg ${sender}`;
+      div.textContent = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function answerAiQuestion(rawText) {
+      const q = rawText.trim();
+      if (!q) return;
+      appendAiMessage(q, "user");
+
+      const ql = q.toLowerCase();
+      let reply = "";
+
+      if (ql.includes("sđt") || ql.includes("sdt") || ql.includes("nhà xe") || ql.includes("điện thoại")) {
+        reply = `Thông tin liên hệ nhà xe hiện tại: ${state.dispatchPhone}.
+Bạn có thể chỉnh trực tiếp ô "SĐT nhà xe" ở bước 2 của đơn hàng, dữ liệu sẽ lưu trên thiết bị.`;
+      } else if (ql.includes("trụ điện") || ql.includes("trụ rào") || ql.includes("phân biệt")) {
+        reply = "• Trụ điện bê tông (7m, 8m): dùng kéo dây điện / chiếu sáng, trọng lượng lớn nên cần xe cẩu tự hành.
+• Trụ rào bê tông (1.8m, 2.0m, trụ góc/giằng 2.2m): dùng làm hàng rào lưới B40, kẽm gai cho rẫy, vườn, khu đất.";
+      } else if (ql.includes("xe") || ql.includes("cống") || ql.includes("vận tải") || ql.includes("chở")) {
+        reply = `Gợi ý xe vận tải:
+• Xe cẩu tự hành: cống D400/D600, trụ điện 7m–8m.
+• Xe tải thùng: gạch trồng cỏ, tấm đan 50x50cm, lưới B40, kẽm gai, trụ rào số lượng nhiều.
+• Xe ba gác / xe nhỏ: đường hẻm, lối vào vườn rẫy.
+Liên hệ nhà xe: ${state.dispatchPhone}`;
+      } else if (ql.includes("giá") || ql.includes("chủ") || ql.includes("sửa")) {
+        reply = "Bấm biểu tượng cây bút (Chế độ Chủ) trên thanh đầu trang để bật sửa đơn giá ngay trên từng sản phẩm. Giá đổi sẽ tự lưu trên trình duyệt hiện tại.";
+      } else {
+        const matches = getProductsWithPrice().filter((p) => matchesSearch(p, q));
+        if (matches.length > 0) {
+          const top = matches.slice(0, 4).map((m) => `• ${m.name}: ${formatVND(m.currentPrice)}/${m.unit}`).join("
+");
+          reply = `Các mặt hàng khớp với "${q}":
+${top}`;
+        } else {
+          reply = `Xưởng có 13 mặt hàng cấu kiện đúc sẵn & vật tư rào (trụ điện, trụ rào, cống D400/D600, gạch trồng cỏ 8 lỗ, tấm đan 50x50cm, lưới B40, kẽm gai). SĐT nhà xe hiện tại: ${state.dispatchPhone}.`;
+        }
+      }
+
+      setTimeout(() => appendAiMessage(reply, "bot"), 120);
+    }
+
+    // Event bindings
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCatalog();
+      updateHeaderCart();
+      renderNotifications();
+
+      appendAiMessage(
+        `Chào bạn, tôi là Trợ lý Bê Tông Gia Nghĩa. Tôi có thể giúp tra cứu trụ điện, trụ rào, cống bê tông, gợi ý xe chở hàng hoặc SĐT nhà xe (${state.dispatchPhone}).`,
+        "bot"
+      );
+
+      // Search
+      const searchInput = document.getElementById("searchInput");
+      const clearSearchBtn = document.getElementById("clearSearchBtn");
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        clearSearchBtn.classList.toggle("visible", searchQuery.length > 0);
+        renderCatalog();
+      });
+
+      clearSearchBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        searchQuery = "";
+        clearSearchBtn.classList.remove("visible");
+        renderCatalog();
+        searchInput.focus();
+      });
+
+      // Category pills
+      document.getElementById("categoryPills").addEventListener("click", (e) => {
+        const pill = e.target.closest(".cat-pill");
+        if (!pill) return;
+        document.querySelectorAll(".cat-pill").forEach((el) => el.classList.remove("active"));
+        pill.classList.add("active");
+        activeCategory = pill.dataset.cat;
+        renderCatalog();
+      });
+
+      // Owner mode toggle & price edits
+      document.getElementById("ownerBtn").addEventListener("click", () => {
+        state.ownerMode = !state.ownerMode;
+        saveState();
+        renderCatalog();
+        showToast(state.ownerMode ? "Đã bật Chế độ Chủ" : "Đã tắt Chế độ Chủ");
+      });
+
+      document.getElementById("resetDefaultBtn").addEventListener("click", () => {
+        const defaults = buildDefaultState();
+        state.prices = defaults.prices;
+        state.dispatchPhone = defaults.dispatchPhone;
+        saveState();
+        renderCatalog();
+        updateHeaderCart();
+        showToast("Đã khôi phục giá & SĐT mẫu gốc");
+      });
+
+      document.getElementById("catalogGrid").addEventListener("input", (e) => {
+        const priceInput = e.target.closest(".owner-price-input");
+        if (!priceInput) return;
+        const id = priceInput.dataset.priceId;
+        const val = Math.max(0, Number(priceInput.value) || 0);
+        state.prices[id] = val;
+        saveState();
+        const card = priceInput.closest(".product-card");
+        if (card) {
+          card.querySelector(".product-price").textContent = formatVND(val);
+        }
+        updateHeaderCart();
+      });
+
+      document.getElementById("catalogGrid").addEventListener("click", (e) => {
+        const deltaBtn = e.target.closest("[data-qty-delta]");
+        if (deltaBtn) {
+          const id = deltaBtn.dataset.id;
+          const delta = Number(deltaBtn.dataset.qtyDelta);
+          const next = Math.max(1, (cardDraftQty[id] || 1) + delta);
+          cardDraftQty[id] = next;
+          const qtyEl = document.getElementById(`draftQty-${id}`);
+          if (qtyEl) qtyEl.textContent = String(next);
+          return;
+        }
+
+        const addBtn = e.target.closest("[data-add-id]");
+        if (addBtn) {
+          const id = addBtn.dataset.addId;
+          addToCart(id, cardDraftQty[id] || 1);
+        }
+      });
+
+      // Bell popover
+      const bellPopover = document.getElementById("bellPopover");
+      document.getElementById("bellBtn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        bellPopover.classList.toggle("open");
+      });
+      document.getElementById("closeBellBtn").addEventListener("click", () => {
+        bellPopover.classList.remove("open");
+      });
+      document.addEventListener("click", (e) => {
+        if (!bellPopover.contains(e.target) && !e.target.closest("#bellBtn")) {
+          bellPopover.classList.remove("open");
+        }
+      });
+
+      // Order modal
+      const orderModal = document.getElementById("orderModal");
+      document.getElementById("openOrderBtn").addEventListener("click", () => {
+        orderModal.classList.add("open");
+        setOrderStep(1);
+      });
+      document.getElementById("closeOrderBtn").addEventListener("click", () => {
+        orderModal.classList.remove("open");
+      });
+      orderModal.addEventListener("click", (e) => {
+        if (e.target === orderModal) orderModal.classList.remove("open");
+      });
+
+      document.querySelectorAll(".step-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setOrderStep(Number(tab.dataset.step));
+        });
+      });
+
+      document.getElementById("cartItemsList").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-cart-delta]");
+        if (!btn) return;
+        const id = btn.dataset.id;
+        const delta = Number(btn.dataset.cartDelta);
+        const nextQty = Math.max(0, Number(state.cart[id] || 0) + delta);
+        if (nextQty === 0) {
+          delete state.cart[id];
+        } else {
+          state.cart[id] = nextQty;
+        }
+        saveState();
+        updateHeaderCart();
+        renderCartStep();
+      });
+
+      // Sync delivery inputs
+      ["customerNameInput", "customerPhoneInput", "deliveryAddressInput", "vehicleSelect", "dispatchPhoneInput"].forEach((id) => {
+        document.getElementById(id).addEventListener("input", () => {
+          state.customer.name = document.getElementById("customerNameInput").value.trim();
+          state.customer.phone = document.getElementById("customerPhoneInput").value.trim();
+          state.customer.address = document.getElementById("deliveryAddressInput").value.trim();
+          state.customer.vehicle = document.getElementById("vehicleSelect").value;
+          const phoneVal = document.getElementById("dispatchPhoneInput").value.trim();
+          state.dispatchPhone = phoneVal || DEFAULT_DISPATCH_PHONE;
+          saveState();
+          renderFleetCard();
+        });
+      });
+
+      document.getElementById("prevStepBtn").addEventListener("click", () => {
+        if (currentOrderStep > 1) setOrderStep(currentOrderStep - 1);
+      });
+
+      document.getElementById("nextStepBtn").addEventListener("click", () => {
+        if (currentOrderStep < 3) {
+          setOrderStep(currentOrderStep + 1);
+        } else {
+          const { totalQty } = getCartSummary();
+          if (totalQty === 0) {
+            showToast("Đơn hàng đang trống");
+            return;
+          }
+          state.notifications.unshift({
+            id: "ord-" + Date.now(),
+            title: `Đã ghi nhận đơn (${totalQty} món)`,
+            body: `Khách: ${state.customer.name || "Khách lẻ"} • Xe: ${FLEET_PROFILES[state.customer.vehicle]?.label || "Xe tải thùng"} • ${state.dispatchPhone}`,
+            time: "Vừa xong"
+          });
+          saveState();
+          renderNotifications();
+          showToast("Đã lưu phiếu đơn hàng");
+          orderModal.classList.remove("open");
+        }
+      });
+
+      // AI Modal
+      const aiModal = document.getElementById("aiModal");
+      document.getElementById("aiFabBtn").addEventListener("click", () => {
+        aiModal.classList.add("open");
+        setTimeout(() => document.getElementById("aiInput").focus(), 120);
+      });
+      document.getElementById("closeAiBtn").addEventListener("click", () => {
+        aiModal.classList.remove("open");
+      });
+      aiModal.addEventListener("click", (e) => {
+        if (e.target === aiModal) aiModal.classList.remove("open");
+      });
+
+      document.querySelectorAll(".quick-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          answerAiQuestion(chip.dataset.q);
+        });
+      });
+
+      document.getElementById("aiForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = document.getElementById("aiInput");
+        const text = input.value;
+        input.value = "";
+        answerAiQuestion(text);
+      });
+    });
+  </script>
+</body>
+</html>
